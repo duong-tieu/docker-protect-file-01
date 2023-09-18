@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  server:
+    build:
+       context: .
+    restart: always
+    ports:
+      - "8081:8080"
+    depends_on:
+      - localhost
+  localhost:
+    image: "localhost:5.7"
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: demo_docker
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+
